@@ -1,0 +1,26 @@
+#- #############################$######################
+#- ###         Genesys GEN 5kW PS iocsh             ###
+#- ####################################################
+#- >> Mandatory
+#- P              - PREFIX for DB 
+#- MOXA_IP        - MOXA IP
+#- MOXA_PORT      - MOXA PORT
+#-
+#- >> Optional
+#- ADDR           - GenesysGEN5kW PS ADDRESS, Default=6
+#- VMIN           - Table 7-3 Voltage Programming Range Min, Default=0.0
+#- VMAX           - Table 7-3 Voltage Programming Range Max, Default=300
+#- CMIN           - Table 7-4 Current Programming Range Min, Default=0
+#- CMAX           - Table 7-4 Current Programming Range Max, Default=17
+#- OVPMIN         - Table 7-5 OVP     Programming Range Min, Default=5.0
+#- OVPMAX         - Table 7-5 OVP     Programming Range Max, Default=330
+#- UVLMIN         - Table 7-6 UVL     Programming Range Min, Default=0.0
+#- UVLMAX         - Table 7-6 UVL     Programming Range Max, Default=285
+#-
+drvAsynIPPortConfigure($(MOXA_IP)-$(MOXA_PORT),$(MOXA_IP):$(MOXA_PORT),0,0,0)
+asynOctetSetInputEos($(MOXA_IP)-$(MOXA_PORT), 0, "\r")
+asynOctetSetOutputEos($(MOXA_IP)-$(MOXA_PORT), 0, "\r")
+#-
+dbLoadRecords("genesysGEN5kWPS.db", "P=$(P),PORT=$(MOXA_IP)-$(MOXA_PORT),ADDR=$(ADDR=6),VMIN=$(VMIN=0.0),VMAX=$(VMAX=300),CMIN=$(CMIN=0),CMAX=$(CMAX=17),OVPMIN=$(OVPMIN=5.0),OVPMAX=$(OVPMAX=330),UVLMIN=$(UVLMIN=0),UVLMAX=$(UVLMAX=285)")
+#-
+
