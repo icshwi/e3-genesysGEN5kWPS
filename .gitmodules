@@ -1,0 +1,4 @@
+[submodule "genesysGEN5kWPS"]
+	path = genesysGEN5kWPS
+	url = https://github.com/icshwi/genesysGEN5kWPS
+	ignore = all
